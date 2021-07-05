@@ -1,0 +1,25 @@
+---
+name: SANDBOX-ibe
+
+on:
+  workflow_dispatch:  
+
+jobs:
+  prid:
+    name: SANDBOX-ibe
+    runs-on: ubuntu-18.04
+    environment:
+      name: dev
+    steps:
+      - id: checkout
+        name: 'Checkout self'
+        uses: actions/checkout@v2
+        with:
+          ref: main                    
+
+      - id: silly-echo
+        name: Dump 4 context values
+        run: |
+         echo "Hola te permito en dev"          
+
+      
