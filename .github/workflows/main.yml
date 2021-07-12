@@ -20,6 +20,6 @@ jobs:
       - id: silly-echo
         name: Dump 4 context values
         run: |
-         echo "Hola te permito en dev"          
-
-      
+         echo "Hola"          
+         MSG="AAAAAA"
+         echo ::set-output name=insights_value::"$MSG"
