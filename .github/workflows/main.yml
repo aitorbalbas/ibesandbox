@@ -20,6 +20,19 @@ jobs:
       - id: silly-echo
         name: Dump 4 context values
         run: |
-         echo "Hola"          
-         MSG="AAAAAA"
-         echo ::set-output name=insights_value::"$MSG"
+         MY_STRING=$(cat << EOF
+         first line
+         second line
+         third line
+         EOF
+         )
+         MY_STRING="${MY_STRING//'%'/'%25'}"
+         MY_STRING="${MY_STRING//$'\n'/'%0A'}"
+         MY_STRING="${MY_STRING//$'\r'/'%0D'}"
+         echo "::set-output name=content::$MY_STRING"
+      - name: display string
+        run: |
+          echo "The string is: ${{ steps.silly-echo.outputs.content }}"
+
+         
+         
